@@ -1,0 +1,49 @@
+/* All html pages */
+
+body {
+    background-color: beige;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 400px;
+    height: auto;
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+
+
+/* Index html page */
+
+.recipes-list {
+    text-align: center;
+    list-style-type: none;
+    display: table;
+    margin: 0 auto;
+}
+
+.recipes-list li {
+    margin: 20px 0;
+}
+
+/* Recipes html pages */
+
+.desc{
+    text-align: center;
+}
