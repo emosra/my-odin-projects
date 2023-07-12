@@ -11,6 +11,8 @@ let ties = 0;
 
 const getComputerChoice = () => CHOICES[Math.floor(Math.random() * CHOICES.length)];
 
+const getPlayerChoice = () => prompt('Rock, Paper, Scissors?');
+
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors') {
         playerWins++;
@@ -44,7 +46,7 @@ const playRound = (playerSelection, computerSelection) => {
 
 const game = () => {
     while (rounds < 5) {
-        console.log(playRound('rock', getComputerChoice()));
+        playRound('rock', getComputerChoice());
         rounds++;
     }
 
