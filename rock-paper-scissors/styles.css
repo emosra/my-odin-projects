@@ -9,6 +9,7 @@
 
 img:hover {
     transform: translate(0, -3px);
+    cursor: pointer;
 }
 
 img:active {
