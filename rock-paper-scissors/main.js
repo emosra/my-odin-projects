@@ -13,6 +13,7 @@ const selectionBtns = document.querySelectorAll('.selection')
 const playerScore = document.querySelector('.player-score')
 const computerScore = document.querySelector('.computer-score')
 const tiesScore = document.querySelector('.ties-score')
+const playAgainBtn = document.querySelector('.play-again')
 const winnerMessage = document.createElement('div')
 
 
@@ -86,4 +87,8 @@ selectionBtns.forEach((btn) => {
         
         e.preventDefault()
     })
+})
+
+playAgainBtn.addEventListener('click', (e) => {
+    location.reload()
 })
