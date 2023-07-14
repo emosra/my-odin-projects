@@ -41,14 +41,32 @@ header {
 .selection-container {
     display: flex;
     justify-content: space-evenly;
-    border-radius: 5px;
     gap: 32px;
 }
 
 .results-container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 25px;
     gap: 32px;
     color: #5e5e5e;
+}
+
+.play-again {
+    text-decoration: none;
+    text-align: center;
+    border: solid;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 15px;
+    color: #5e5e5e;;
+}
+
+.play-again:hover {
+    background-color: #5e5e5e;
+    color: white;
+}
+
+.play-again:active {
+    background-color: #cecece;
 }
