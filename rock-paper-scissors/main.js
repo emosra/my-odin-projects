@@ -6,12 +6,19 @@ let rounds = 0;
 let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
+let isWinner = false;
+
+const body = document.querySelector('body');
+const selectionBtns = document.querySelectorAll('.selection')
+const playerScore = document.querySelector('.player-score')
+const computerScore = document.querySelector('.computer-score')
+const tiesScore = document.querySelector('.ties-score')
+const winnerMessage = document.createElement('div')
+
 
 // Functions
 
 const getComputerChoice = () => CHOICES[Math.floor(Math.random() * CHOICES.length)];
-
-const getPlayerChoice = () => prompt('Rock, Paper, Scissors?');
 
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors') {
@@ -44,14 +51,39 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
-const game = () => {
-    while (rounds < 5) {
-        playRound('rock', getComputerChoice());
-        rounds++;
-    }
-
-    console.log(`Player wins: ${playerWins}\nComputer wins: ${computerWins}\nTies: ${ties}`)
+const updateScore = () => {
+    playerScore.textContent = playerWins;
+    computerScore.textContent = computerWins;
+    tiesScore.textContent = ties;
 }
 
+const checkWinner = () => {
+    if (playerWins === 5) {
+        winnerMessage.textContent = "Player Wins!"
+        isWinner = true;
+    } else if (computerWins === 5) {
+        winnerMessage.textContent = "Computer Wins!"
+        isWinner = true;
+    }
 
-game()
+    body.appendChild(winnerMessage)
+}
+
+// DOM
+
+selectionBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        const selection = e.target.alt
+
+        if (!isWinner) {
+            playRound(selection, getComputerChoice());
+            updateScore()
+            checkWinner()
+            
+        } else {
+            winnerMessage.textContent = "The game is over, STOP!"
+        }
+        
+        e.preventDefault()
+    })
+})
