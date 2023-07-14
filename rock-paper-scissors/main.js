@@ -15,6 +15,7 @@ const computerScore = document.querySelector('.computer-score')
 const tiesScore = document.querySelector('.ties-score')
 const playAgainBtn = document.querySelector('.play-again')
 const winnerMessage = document.createElement('div')
+const resultMessage = document.querySelector('.result-message');
 
 
 // Functions
@@ -77,7 +78,9 @@ selectionBtns.forEach((btn) => {
         const selection = e.target.alt
 
         if (!isWinner) {
-            playRound(selection, getComputerChoice());
+            let result = playRound(selection, getComputerChoice());
+
+            resultMessage.textContent = result;
             updateScore()
             checkWinner()
             

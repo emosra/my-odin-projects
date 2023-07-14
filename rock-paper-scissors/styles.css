@@ -47,7 +47,7 @@ header {
 .results-container {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 15px;
     gap: 32px;
     color: #5e5e5e;
 }
@@ -69,4 +69,10 @@ header {
 
 .play-again:active {
     background-color: #cecece;
+}
+
+.result-message {
+    /* border: solid; */
+    text-align: center;
+    margin-top: 15px;
 }
