@@ -1,11 +1,13 @@
 // Variables
 
-const INITIAL_SIZE = 16;
+const INITIAL_SIZE = 8;
 
 const gridContainer = document.querySelector('.grid-container')
 const resetBtn = document.querySelector('.reset-btn')
 const blackBtn = document.querySelector('.black-btn')
 const randomBtn = document.querySelector('.random-btn')
+const rangeSlider = document.querySelector('.range-slider')
+const rangeValue = document.querySelector('.range-value')
 
 // Functions
 
@@ -50,7 +52,11 @@ resetBtn.addEventListener('click', (e) => {
     })
 })
 
-
+rangeSlider.addEventListener('input', (e) => {
+    rangeValue.textContent = rangeSlider.value + ' x ' + rangeSlider.value;
+    gridContainer.replaceChildren()
+    createGrid(rangeSlider.value)
+})
 
 
 // Intialize Grid
