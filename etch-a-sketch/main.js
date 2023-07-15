@@ -1,7 +1,8 @@
 const INITIAL_SIZE = 16;
 
 const gridContainer = document.querySelector('.grid-container')
-const gridElement = document.querySelector('.grid-cell')
+const resetBtn = document.querySelector('.reset-btn')
+const blackBtn = document.querySelector('.black-btn')
 
 const createGrid = (size) => {
     for (let i = 0; i < size; i++) {
@@ -19,5 +20,13 @@ const createGrid = (size) => {
         }
     }
 }
+
+resetBtn.addEventListener('click', (e) => {
+    document.querySelectorAll('.grid-cell').forEach((cell) => {
+        cell.style.backgroundColor = 'beige';
+    })
+})
+
+
 
 createGrid(INITIAL_SIZE)
