@@ -1,8 +1,13 @@
+// Variables
+
 const INITIAL_SIZE = 16;
 
 const gridContainer = document.querySelector('.grid-container')
 const resetBtn = document.querySelector('.reset-btn')
 const blackBtn = document.querySelector('.black-btn')
+const randomBtn = document.querySelector('.random-btn')
+
+// Functions
 
 const createGrid = (size) => {
     for (let i = 0; i < size; i++) {
@@ -17,10 +22,24 @@ const createGrid = (size) => {
     }
 }
 
+const getRandomInt = () => {
+    return Math.floor(Math.random() * 255)
+}
+
+// DOM
+
 blackBtn.addEventListener('click', (e) => {
     document.querySelectorAll('.grid-cell').forEach((cell) => {
         cell.addEventListener('mouseover', (e) => {
             cell.style.backgroundColor ='black'
+        })
+    })
+})
+
+randomBtn.addEventListener('click', (e) => {
+    document.querySelectorAll('.grid-cell').forEach((cell) => {
+        cell.addEventListener('mouseover', (e) => {
+            cell.style.backgroundColor = `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`
         })
     })
 })
@@ -32,5 +51,8 @@ resetBtn.addEventListener('click', (e) => {
 })
 
 
+
+
+// Intialize Grid
 
 createGrid(INITIAL_SIZE)
