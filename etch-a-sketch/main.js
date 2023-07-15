@@ -13,13 +13,17 @@ const createGrid = (size) => {
             const gridCell = document.createElement('div')
             gridCell.classList.add('grid-cell')
             gridRow.appendChild(gridCell)
-
-            gridCell.addEventListener('mouseover', (e) => {
-                gridCell.style.backgroundColor = 'black'
-            })
         }
     }
 }
+
+blackBtn.addEventListener('click', (e) => {
+    document.querySelectorAll('.grid-cell').forEach((cell) => {
+        cell.addEventListener('mouseover', (e) => {
+            cell.style.backgroundColor ='black'
+        })
+    })
+})
 
 resetBtn.addEventListener('click', (e) => {
     document.querySelectorAll('.grid-cell').forEach((cell) => {
