@@ -1,34 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-header {
-    border: solid;
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: beige;
+    font-family: 'Noticia Text', serif;
+}
+
+a, input {
+    text-decoration: none;
+    border: 3px solid black;
     text-align: center;
+    padding: 4px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
+a:hover {
+    box-shadow: 8px 8px lightgray;
+    /* border: 3px solid lightgray; */
 }
 
 .options-container {
-    border: solid;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.main-container {
-    border: 2px solid red;
-    display: flex;
-    justify-content: center;
     gap: 50px;
 }
 
 .grid-container {
+    border: 10px solid white;
+    border-radius: 5px;
+    box-shadow: 10px 10px;
     display: flex;
+    height: 500px;
+    width: 500px;
 }
 
-.grid-element {
+.grid-row {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    flex: 1;
+}
+
+.grid-cell {
     border: solid;
-    width: 30px;
-    height: 30px;
+    flex: 1;
 }
