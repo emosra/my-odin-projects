@@ -33,7 +33,12 @@ a {
 
 a:hover {
     box-shadow: 8px 8px lightgray;
-    /* border: 3px solid lightgray; */
+}
+
+a:active {
+    color: white;
+    background-color: black;
+    box-shadow: 4px 4px lightgray;
 }
 
 .options-container {
