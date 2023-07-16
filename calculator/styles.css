@@ -8,25 +8,25 @@
 }
 
 body {
-    height: 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    height: 100vh;
 }
 
 .calc-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #F8F3EA;
+    border:  3px solid;
+    border-radius: 5px;
     height: 600px;
     width: 450px;
-    gap: 5px;
-    border:  3px solid;
     padding: 20px 10px;
-    border-radius: 5px;
-    background-color: #F8F3EA;
-    font-family: 'Orbitron', sans-serif;
+    gap: 5px;
     box-shadow: 10px 10px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .calc-row {
@@ -39,9 +39,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: solid; */
-    border-radius: 5px;
     flex: 1;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -55,33 +54,25 @@ body {
     color: white;
 }
 
-.clear:active, .back:active {
-    color: #FF5900;
-}
-
 .top-row {
-    /* border: solid; */
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-end;
-    align-items: flex-end; */
-    border-radius: 5px;
-    padding: 10px;
     background-color: #E9472A;
+    padding: 10px;
+    border-radius: 5px;
     gap: 0px;
 }
 
 .calc-screen {
-    /* border: solid; */
     text-align: right;
     flex: 1;
 }
 
 .top {
-    flex: 10;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex: 10;
 }
 
 .mid {
@@ -92,15 +83,18 @@ body {
     background-color: #FFBC06;
 }
 
+.clear:active, .back:active {
+    color: #FF5900;
+}
+
 .left-container {
-    /* border: solid; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 400px;
     height: 300px;
-    text-align: center;
 }
 
 .left-container p {
@@ -108,6 +102,6 @@ body {
 }
 
 .prev-calc {
-    color: #FFDF38;
     opacity: 0.5;
+    color: #FFDF38;
 }
