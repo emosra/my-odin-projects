@@ -3,56 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/4240/4240516.png">
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <script src="main.js" defer></script>
+    <title>Calculator</title>
 </head>
 <body>
 
-    <div class="left-container">
-        <h1>Calculator</h1>
-        <p>The first mechanical calculator was invented by Blaise Pascal, a French mathematician, when he was 19 in 1642, to help is father calculate mathematic sums. Calculators were originally gear driven wheels, but now they use a chip, typically a microchip, and some kind of energy source.</p>
+    <h1><span>Calc</span>ulator</h1>
+
+    <div class="main-container">
+
+
+        <div class="fact-container">
+            <em>
+                Calculators can only calculate, they cannot do mathematics.
+            </em>
+            <em>- John A. Van de Walle</em>
+        </div>
+    
+    
+    
+        <div class="calc-container">
+            <div class="calc-row top-row">
+                <div class="calc-screen top">
+                    <span class="prev-calc">0</span>
+                    <span class="curr-total">0</span>
+                    <span class="curr-input">0</span>
+                </div>
+                <div class="calc-screen mid"></div>
+                <div class="calc-screen bottom"></div>
+            </div>
+            <div class="calc-row">
+                <div class="calc-btn clear">Clear</div>
+                <div class="calc-btn back">Back</div>
+            </div>
+            <div class="calc-row">
+                <div class="calc-btn num">7</div>
+                <div class="calc-btn num">8</div>
+                <div class="calc-btn num">9</div>
+                <div class="calc-btn operator">/</div>
+            </div>
+            <div class="calc-row">
+                <div class="calc-btn num">4</div>
+                <div class="calc-btn num">5</div>
+                <div class="calc-btn num">6</div>
+                <div class="calc-btn operator">*</div>
+            </div>
+            <div class="calc-row">
+                <div class="calc-btn num">1</div>
+                <div class="calc-btn num">2</div>
+                <div class="calc-btn num">3</div>
+                <div class="calc-btn operator">-</div>
+            </div>
+            <div class="calc-row">
+                <div class="calc-btn">.</div>
+                <div class="calc-btn num">0</div>
+                <div class="calc-btn equals">=</div>
+                <div class="calc-btn operator">+</div>
+            </div>
+        </div>
+
     </div>
     
-    <div class="calc-container">
-        <div class="calc-row top-row">
-            <div class="calc-screen top">
-                <span class="prev-calc">0</span>
-                <span class="curr-total">0</span>
-                <span class="curr-input">0</span>
-            </div>
-            <div class="calc-screen mid"></div>
-            <div class="calc-screen bottom"></div>
-        </div>
-        <div class="calc-row">
-            <div class="calc-btn clear">Clear</div>
-            <div class="calc-btn back">Back</div>
-        </div>
-        <div class="calc-row">
-            <div class="calc-btn num">7</div>
-            <div class="calc-btn num">8</div>
-            <div class="calc-btn num">9</div>
-            <div class="calc-btn operator">/</div>
-        </div>
-        <div class="calc-row">
-            <div class="calc-btn num">4</div>
-            <div class="calc-btn num">5</div>
-            <div class="calc-btn num">6</div>
-            <div class="calc-btn operator">*</div>
-        </div>
-        <div class="calc-row">
-            <div class="calc-btn num">1</div>
-            <div class="calc-btn num">2</div>
-            <div class="calc-btn num">3</div>
-            <div class="calc-btn operator">-</div>
-        </div>
-        <div class="calc-row">
-            <div class="calc-btn">.</div>
-            <div class="calc-btn num">0</div>
-            <div class="calc-btn equals">=</div>
-            <div class="calc-btn operator">+</div>
-        </div>
-    </div>
-
+    <footer>
+        <a href="https://github.com/emosra/my-odin-projects">
+            <img src="./images/github-logo.svg" alt="github logo">
+        </a>
+    </footer>
 </body>
 </html>
