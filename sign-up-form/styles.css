@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --green: #80AC40;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    color: var(--green);
+}
+
+body {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'VT323', monospace;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    /* 540 x 384 */
+    background: url('https://64.media.tumblr.com/a4ceca22cc9c75d182f3f1bde1b154ea/1a81e7dc134d48c3-4e/s500x750/b482896eb707d917d26bdd2f279b621a213a3654.gifv');
+    background-position: center;
+}
+
+.right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1.5;
+    background-color: #2A2A3A;
+    background-color: #2A323A;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #2A323A;
+    border-radius: 5px;
+    gap: 10px;
+    width: 500px;
+    height: 500px;
+    box-shadow: 2px 2px var(--green);
+}
+
+.skull {
+    width: 100px;
+    height: 100px;
+}
+
+.form-input {
+    all: unset;
+    width: 200px;
+    border-bottom: 2px solid var(--green);
+    color: white;
+    height: 38px;
+    border-radius: 0px 0px 2.5px 0px;
+}
+
+.form-input:focus {
+    border-bottom: 2px solid white;
+}
+
+.form-input:valid {
+    border-bottom: 2px solid white;
+}
+
+.form-input::placeholder {
+    opacity: 0.5;
+}
+
+input[type=submit] {
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: .9rem;
+    padding: 2px 16px;
+    min-width: 96px;
+    min-height: 38px;
+    border: none;
+    color: white;
+    background-color: var(--green);
+
+
+}
+
+input[type=submit]:hover {
+    transition: background-color .30s ease,color .10s ease;
+    background-color: #2A323A;
+    border: solid white;
+}
+
+input[type=submit]:active {
+    background-color: whitesmoke;
+    color: var(--green);
+}
+
+.top, .bottom {
+    /* border: white solid; */
+    display: flex;
+    gap: 32px;
+}
+
