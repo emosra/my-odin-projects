@@ -69,6 +69,7 @@ form {
     color: white;
     height: 38px;
     border-radius: 0px 0px 2.5px 0px;
+    caret-color: var(--green);
 }
 
 .form-input:focus {
@@ -114,4 +115,3 @@ input[type=submit]:active {
     display: flex;
     gap: 32px;
 }
-
