@@ -12,6 +12,9 @@ const prevCalc = document.querySelector('.prev-calc')
 const displayTotal = document.querySelector('.curr-total')
 const clearBtn = document.querySelector('.clear')
 
+const midBar = document.querySelector('.mid')
+const bottomBar = document.querySelector('.bottom')
+
 const operate = (num1, operator, num2) => {
     if (operator === '+') {
         return add(num1, num2)
@@ -83,7 +86,14 @@ const resetCalc = () => {
     displayValue.textContent = '0'
     prevCalc.textContent = '0'
     displayTotal.textContent = 0
+}
 
+const getRandomInt = () => {
+    return Math.floor(Math.random() * 255)
+}
+
+const changeColor = () => {
+    midBar.style.backgroundColor = `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`
 }
 
 clearBtn.addEventListener('click', resetCalc)
@@ -97,6 +107,7 @@ numBtns.forEach((btn) => {
         if (displayValue.textContent.length >= 10) return;
 
         displayValue.textContent += e.target.textContent
+        changeColor()
     })
 })
 
@@ -106,6 +117,7 @@ operatorBtns.forEach((btn) => {
             currentNum = Number(displayValue.textContent);
             currentOperator = e.target.textContent
             displayValue.textContent = '0'
+            changeColor()
             return
         }
 
@@ -119,6 +131,8 @@ operatorBtns.forEach((btn) => {
 
             currentOperator = e.target.textContent
             currentNum = currTotal;
+
+            changeColor()
             return
         }
 
@@ -140,5 +154,7 @@ equalsBtn.addEventListener('click', (e) => {
     prevCalc.textContent = `${currentNum} ${currentOperator} ${currentNum2}`
     displayTotal.textContent = currTotal;
 
-    resetNums();
+    
+
+    changeColor()
 })
