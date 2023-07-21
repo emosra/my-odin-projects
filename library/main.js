@@ -1,5 +1,10 @@
 const albumsContainer = document.querySelector('.albums-container')
 const addAlbumForm = document.querySelector('.add-album')
+const totalAlbums = document.querySelector('.total-albums')
+const totalRuntime = document.querySelector('.total-runtime')
+
+let currentTotalAlbumNum = 0;
+let currentTotalRuntimeNum = 0;
 
 
 let myLibrary = [];
@@ -47,6 +52,9 @@ function createCardElements(artist, album, runtime) {
 
         myLibrary.splice(itemIndex, 1)
         albumCard.remove()
+        createAlbumsIndex()
+        checkTotalAlbums(myLibrary)
+        checkTotalRuntime(myLibrary)
     })
 }
 
@@ -70,5 +78,24 @@ addAlbumForm.addEventListener('submit', (e) => {
 
     createCardElements(artist, album, runtime)
     createAlbumsIndex()
+    checkTotalAlbums(myLibrary)
+    checkTotalRuntime(myLibrary)
 })
 
+function checkTotalAlbums(listOfAlbums) {
+    currentTotalAlbumNum = listOfAlbums.length;
+
+    totalAlbums.textContent = currentTotalAlbumNum;
+}
+
+function checkTotalRuntime(listOfAlbums) {
+    let sum = 0;
+
+    for (let i = 0; i < listOfAlbums.length; i++) {
+        sum += Number(listOfAlbums[i].runtime)
+    }
+
+    currentTotalRuntimeNum = sum;
+    totalRuntime.textContent = currentTotalRuntimeNum;
+
+}
