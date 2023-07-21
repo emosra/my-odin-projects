@@ -76,7 +76,7 @@ header {
     color: white;
 }
 
-/* Main container styling (holds books container & stats) */
+/* Main container styling (holds albums container & stats) */
 
 .main-container {
     display: flex;
@@ -85,9 +85,9 @@ header {
     grid-gap: 16px;
 }
 
-/* Books container styling */
+/* Albums container styling */
 
-.books-container {
+.albums-container {
     flex: 3;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -96,7 +96,7 @@ header {
     grid-gap: 8px;
 }
 
-.book {
+.album {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -106,7 +106,7 @@ header {
     color: white;
 }
 
-.book:hover {
+.album:hover {
     cursor: pointer;
     background-size: cover;
     border: solid white 3px;

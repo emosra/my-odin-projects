@@ -1,32 +1,32 @@
-// const booksContainer = document.querySelector('.books-container')
+const albumsContainer = document.querySelector('.albums-container')
 
-// let myLibrary = [];
+let myLibrary = [];
 
-// function Book(title, author, numOfPages, haveRead) {
-//     this.title = title;
-//     this.author = author;
-//     this.numOfPages = numOfPages;
-//     this.haveRead = haveRead;
-// }
+function Album(title, artist, runtime, haveHeard) {
+    this.title = title;
+    this.artist = artist;
+    this.runtime = runtime;
+    this.haveHeard = haveHeard;
+}
 
-// Book.prototype.info = function() {
-//     return `${this.title} by ${this.author}, ${this.numOfPages} pages`
-// }
+Album.prototype.info = function() {
+    return `${this.title} by ${this.artist}, ${this.runtime} runtime`
+}
 
-// function addBookToLibrary(book) {
-//     myLibrary.push(book);
-// }
+function addalbumToLibrary(album) {
+    myLibrary.push(album);
+}
 
-// const bookOne = new Book('book 1', 'author 1', 200, true)
-// const bookTwo = new Book('book 2', 'author 2', 111, false)
+const albumOne = new Album('album 1', 'artist 1', 200, true)
+const albumTwo = new Album('album 2', 'artist 2', 111, false)
 
-// addBookToLibrary(bookOne)
-// addBookToLibrary(bookTwo)
+addalbumToLibrary(albumOne)
+addalbumToLibrary(albumTwo)
 
 
-// for (const obj of myLibrary) {
-//     const bookCard = document.createElement('div')
-//     bookCard.textContent = obj.info();
-//     booksContainer.appendChild(bookCard)
-//     console.log(obj.info())
-// }
+for (const obj of myLibrary) {
+    const albumCard = document.createElement('div')
+    albumCard.textContent = obj.info();
+    albumsContainer.appendChild(albumCard)
+    console.log(obj.info())
+}
