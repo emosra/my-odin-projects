@@ -108,12 +108,12 @@ ul {
 .sidebar-btns li:hover {
     cursor: pointer;
     background-color: var(--hover-gray);
-    color: var(--text-hover);
+    color: var(--hover-yellow);
 }
 
 .styled-btn {
     background-color: var(--hover-gray);
-    color: var(--text-hover);
+    color: var(--hover-yellow);
 }
 
 /* Header styles */
