@@ -33,6 +33,8 @@ body {
 
     background-color: var(--dark);
     padding: 16px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .logo {
