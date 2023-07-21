@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+:root {
+    --dark: #1C1C1C;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 4fr;
+    background-color: #120F14;
+    color: #7B7F81;
+}
+
+/* Sidebar styling */
+
+.sidebar {
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--dark);
+    padding: 16px;
+}
+
+.logo {
+    font-size: 64px;
+    color: rgb(188, 188, 188);
+    flex: 1;
+    align-self: center;
+}
+
+.sidebar-icon {
+    font-size: 16px;
+}
+
+.sidebar-btns {
+    flex: 4;
+}
+
+.sidebar-btns li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.sidebar-btns li:hover {
+    cursor: pointer;
+    color: white;
+}
