@@ -15,6 +15,12 @@ ul {
     list-style: none;
 }
 
+input[type=text], input[type=number], input[type=submit]   {
+    all: unset;
+}
+
+
+
 body {
     height: 100vh;
     display: grid;
@@ -26,8 +32,19 @@ body {
 
 /* Header stylings */
 
-header {
+/* header, form, form input {
     border: solid white;
+} */
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
 }
 
 .add-btn {
@@ -101,9 +118,9 @@ header {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: var(--dark) solid 3px;
     border-radius: 10px;
     color: white;
+
 }
 
 .album:hover {

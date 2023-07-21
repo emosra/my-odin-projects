@@ -9,8 +9,15 @@
 </head>
 <body>
     <header>
-        <h1>header</h1>
-        <ion-icon name="add-circle" class="add-btn"></ion-icon>
+        <form action="" class="add-album">
+            <input type="text" name="artist" placeholder="Artist Name">
+            <input type="text" name="album" placeholder="Album Name">
+            <input type="number" name="runtime" placeholder="Minutes Long">
+            <label for="have-heard">Have you heard this album?</label>
+            <input type="checkbox" name="have-heard" class="have-heard">
+            <input type="submit" value="submit">
+        </form>
+        <!-- <ion-icon name="add-circle" class="add-btn"></ion-icon> -->
     </header>
 
     <div class="sidebar">
@@ -25,19 +32,12 @@
     <div class="main-container">
 
         <div class="albums-container">
-
             <div class="album illmatic">
                 <h3>Nas</h3>
                 <p>Illmatic</p>
                 <p>39:51</p>
             </div>
-
-
-
         </div>
-
-
-
 
         <div class="stats">
             <h2>Total Albums</h2>
@@ -46,17 +46,7 @@
             <p>39:51</p>
         </div>
 
-
     </div>
-
-
-
-
-
-
-
-
-
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

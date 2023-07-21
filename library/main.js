@@ -1,4 +1,5 @@
 const albumsContainer = document.querySelector('.albums-container')
+const addAlbumForm = document.querySelector('.add-album')
 
 let myLibrary = [];
 
@@ -17,16 +18,30 @@ function addalbumToLibrary(album) {
     myLibrary.push(album);
 }
 
-const albumOne = new Album('album 1', 'artist 1', 200, true)
-const albumTwo = new Album('album 2', 'artist 2', 111, false)
-
-addalbumToLibrary(albumOne)
-addalbumToLibrary(albumTwo)
-
-
-for (const obj of myLibrary) {
+function createCardElements(artist, album, runtime) {
     const albumCard = document.createElement('div')
-    albumCard.textContent = obj.info();
+    const topText = document.createElement('h2')
+    const middleText = document.createElement('p')
+    const bottomText = document.createElement('p')
+
+    topText.textContent = artist
+    middleText.textContent = album
+    bottomText.textContent = runtime
+
+    albumCard.appendChild(topText)
+    albumCard.appendChild(middleText)
+    albumCard.appendChild(bottomText)
+
+    albumCard.classList.add('album')
     albumsContainer.appendChild(albumCard)
-    console.log(obj.info())
 }
+
+addAlbumForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let artist = e.target[0].value
+    let album = e.target[1].value
+    let runtime = e.target[2].value
+    let isChecked = e.target[2].checked
+
+    createCardElements(artist, album, runtime)
+})
