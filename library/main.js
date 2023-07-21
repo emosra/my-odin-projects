@@ -40,11 +40,18 @@ function createCardElements(artist, album, runtime) {
     albumCard.classList.add('album')
     deleteBtn.classList.add('delete-btn')
     albumsContainer.appendChild(albumCard)
+
+    deleteBtn.addEventListener('click', (e) => {
+        console.log(albumCard.getAttribute('index'))
+        let itemIndex = albumCard.getAttribute('index')
+
+        myLibrary.splice(itemIndex, 1)
+        albumCard.remove()
+    })
 }
 
 function createAlbumsIndex() {
     const albums = document.querySelectorAll('.album')
-
 
     albums.forEach((album, index) => {
         album.setAttribute('index', index)
@@ -57,6 +64,9 @@ addAlbumForm.addEventListener('submit', (e) => {
     let album = e.target[1].value
     let runtime = e.target[2].value
     let isChecked = e.target[2].checked
+
+    const newAlbum = new Album(artist, album, runtime, isChecked);
+    addalbumToLibrary(newAlbum)
 
     createCardElements(artist, album, runtime)
     createAlbumsIndex()
