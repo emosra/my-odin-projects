@@ -1,0 +1,52 @@
+/* FE4C4C
+FCC726 */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.game-container {
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 8px;
+    border: solid white 5px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cell {
+    /* border: solid; */
+    background-color: #FE4C4C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+}
+
+.cell:hover {
+    background-color: #FCC726;
+}
+
+.cell:active {
+    opacity: 0.5;
+}
+
+.cell:hover {
+    cursor: pointer;
+}
