@@ -15,7 +15,6 @@ const gameBoard = (() => {
     let winningCombo;
     let haveWinner = false;
 
-
     return {winningCombos, board, playerOne, playerTwo, winningCombo, haveWinner}
 })();
 
@@ -80,6 +79,17 @@ const displayController = (() => {
                 playerMove(gameBoard.playerOne, cell, index)
             } else {
                 playerMove(gameBoard.playerTwo, cell, index)
+            }
+
+            if (gameBoard.haveWinner) {
+                for (let i = 0; i < gameBoard.winningCombo.length; i++) {
+                    const winningIndexes = gameBoard.winningCombo[i];
+                    
+                    cells[winningIndexes].style.opacity = '0.5';
+                }
+                // console.log(cells[2].textContent)
+                // console.log(cells[5].textContent)
+                // console.log(cells[8])
             }
         })
     })
