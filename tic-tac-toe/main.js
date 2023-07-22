@@ -1,11 +1,4 @@
 const gameBoard = (() => {
-    const board = ['', '', '', '', '', '', '', '', ''];
-    let haveWinner = false;
-
-    let playerOne;
-    let playerTwo;
-    
-
     const winningCombos = [
         [0,1,2], // [1,1,1,0,0,0,0,0,0]
         [3,4,5], // [0,0,0,1,1,1,0,0,0]
@@ -16,16 +9,20 @@ const gameBoard = (() => {
         [0,4,8], // [1,0,0,0,1,0,0,0,1]
         [2,4,6], // [0,0,1,0,1,0,1,0,0]
     ]
+    const board = ['', '', '', '', '', '', '', '', ''];
+    let playerOne;
+    let playerTwo;
+    let haveWinner = false;
 
-    return {board, haveWinner, winningCombos}
+    return {winningCombos, board, playerOne, playerTwo, haveWinner}
 })();
 
 const displayController = (() => {
+    const body = document.querySelector('body')
+    const gameContainer = document.querySelector('.game-container')
+    const choiceContainer = document.querySelector('.choices-container')
     const cells = document.querySelectorAll('.cell')
     const selectionBtns = document.querySelectorAll('.choices')
-    const choiceContainer = document.querySelector('.choices-container')
-    const gameContainer = document.querySelector('.game-container')
-    const body = document.querySelector('body')
     
     const renderBoard = () => {
         for (let i = 0; i < gameBoard.board.length; i++) {
@@ -36,6 +33,16 @@ const displayController = (() => {
     const unBlurContainer = () => {
         gameContainer.style.filter = "blur(0px)";
 
+    }
+
+    const hideSelectionContainer = () => {
+        choiceContainer.style.display = 'none'
+    }
+
+    const createPlayerInfo = (player) => {
+        const choiceText = document.createElement('div')
+        choiceText.textContent = `${player.name}: ${player.choice}`
+        body.appendChild(choiceText)
     }
 
     const checkWinner = (player) => {
@@ -53,98 +60,52 @@ const displayController = (() => {
         }
     }
 
-    const playerMove = (player, cell, index) => {
+    const playerMove = (player, cellSelection, index) => {
         gameBoard.board[index] = player.choice;
-        cell.textContent = player.choice;
-        playerOne.isTurn = !playerOne.isTurn;
-        playerTwo.isTurn = !playerTwo.isTurn;
+        cellSelection.textContent = player.choice;
+        gameBoard.playerOne.isTurn = !gameBoard.playerOne.isTurn;
+        gameBoard.playerTwo.isTurn = !gameBoard.playerTwo.isTurn;
         checkWinner(player)
-
-
-        // if (player.isTurn) {
-            // gameBoard.board[index] = player.choice;
-            // cell = player.choice;
-
-
-            // playerOne.isTurn = false;
-            // playerTwo.isTurn = true;
-            // checkWinner(playerOne)
-        // }
-
-        // else {
-        //     gameBoard.board[index] = playerTwo.choice;
-        //     e.target.textContent = playerTwo.choice;
-        //     playerTwo.isTurn = false;
-        //     playerOne.isTurn = true;
-        //     checkWinner(playerTwo)
-        // }
     }
 
     cells.forEach((cell, index) => {
         cell.addEventListener('click', (e) => {
 
-            if (e.target.textContent !== '' || gameBoard.haveWinner === true) return;
+            if (cell.textContent !== '' || gameBoard.haveWinner === true) return;
 
-            if (playerOne.isTurn) {
-                playerMove(playerOne, e.target, index)
-                // cell.textContent = playerOne.choice;
+            if (gameBoard.playerOne.isTurn) {
+                playerMove(gameBoard.playerOne, cell, index)
             } else {
-                playerMove(playerTwo, e.target, index)
-                // e.target.textContent = playerTwo.choice;
+                playerMove(gameBoard.playerTwo, cell, index)
             }
-
-            // if (playerOne.isTurn) {
-            //     gameBoard.board[index] = playerOne.choice;
-            //     e.target.textContent = playerOne.choice;
-            //     playerOne.isTurn = false;
-            //     playerTwo.isTurn = true;
-            //     checkWinner(playerOne)
-            // } else {
-            //     gameBoard.board[index] = playerTwo.choice;
-            //     e.target.textContent = playerTwo.choice;
-            //     playerTwo.isTurn = false;
-            //     playerOne.isTurn = true;
-            //     checkWinner(playerTwo)
-            // }
-            
         })
     })
 
     selectionBtns.forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
-            
+            gameBoard.playerOne = Player('Player One', btn.textContent, true)
 
-            playerOne = Player(e.target.textContent, true)
-
-            if (playerOne.choice === 'X') {
-                playerTwo = Player('O', false)
-            } else if (playerOne.choice === 'O') {
-                playerTwo = Player('X', false)
+            if (gameBoard.playerOne.choice === 'X') {
+                gameBoard.playerTwo = Player('Player Two', 'O', false)
+            } else if (gameBoard.playerOne.choice === 'O') {
+                gameBoard.playerTwo = Player('Player Two', 'X', false)
             }
 
-            choiceContainer.style.display = 'none'
-            unBlurContainer()
-
-            const playerOneChoiceText = document.createElement('div')
-            const playerTwoChoiceText = document.createElement('div')
-
-            playerOneChoiceText.textContent = `Player one: ${playerOne.choice}`
-            playerTwoChoiceText.textContent = `Player two: ${playerTwo.choice}`
-
-            body.appendChild(playerOneChoiceText)
-            body.appendChild(playerTwoChoiceText)
-            
+            hideSelectionContainer();
+            unBlurContainer();
+            createPlayerInfo(gameBoard.playerOne);
+            createPlayerInfo(gameBoard.playerTwo);
         })
     })
-    
-    return {renderBoard}
 
+    return {renderBoard}
 })();
 
 // Player factory function
 
-const Player = (choice, isTurn) => {
-    return {choice, isTurn}
+const Player = (name, choice, isTurn) => {
+    
+    return {name, choice, isTurn}
 }
 
 // Functions
