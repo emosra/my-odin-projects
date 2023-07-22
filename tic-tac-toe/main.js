@@ -12,9 +12,11 @@ const gameBoard = (() => {
     const board = ['', '', '', '', '', '', '', '', ''];
     let playerOne;
     let playerTwo;
+    let winningCombo;
     let haveWinner = false;
 
-    return {winningCombos, board, playerOne, playerTwo, haveWinner}
+
+    return {winningCombos, board, playerOne, playerTwo, winningCombo, haveWinner}
 })();
 
 const displayController = (() => {
@@ -45,17 +47,19 @@ const displayController = (() => {
         body.appendChild(choiceText)
     }
 
-    const checkWinner = (player) => {
+    const checkWinner = (boardArr, player) => {
         for (let i = 0; i < gameBoard.winningCombos.length; i++) {
-            let matches = 0;
+            let arr = [];
             for (let j = 0; j < gameBoard.winningCombos[i].length; j++) {
-                if (gameBoard.board[gameBoard.winningCombos[i][j]] === player.choice) {
-                    matches += 1;
+                const winningIndex = gameBoard.winningCombos[i][j];
+                if (boardArr[winningIndex] === player.choice) {
+                    arr.push(winningIndex);
                 }
             }
-            if (matches === 3) {
+            if (arr.length === 3) {
+                gameBoard.winningCombo = arr;
                 gameBoard.haveWinner = true;
-                break;
+                return;
             }
         }
     }
@@ -65,12 +69,11 @@ const displayController = (() => {
         cellSelection.textContent = player.choice;
         gameBoard.playerOne.isTurn = !gameBoard.playerOne.isTurn;
         gameBoard.playerTwo.isTurn = !gameBoard.playerTwo.isTurn;
-        checkWinner(player)
+        checkWinner(gameBoard.board, player)
     }
 
     cells.forEach((cell, index) => {
         cell.addEventListener('click', (e) => {
-
             if (cell.textContent !== '' || gameBoard.haveWinner === true) return;
 
             if (gameBoard.playerOne.isTurn) {
