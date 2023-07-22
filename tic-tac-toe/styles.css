@@ -15,7 +15,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     font-family: 'Rubik', sans-serif;
+    gap: 8px;
 }
 
 .game-container {
@@ -31,7 +33,6 @@ body {
 }
 
 .cell {
-    /* border: solid; */
     background-color: #FE4C4C;
     display: flex;
     justify-content: center;
@@ -49,4 +50,30 @@ body {
 
 .cell:hover {
     cursor: pointer;
+}
+
+.choices {
+    display: flex;
+    gap: 16px;
+    /* border: solid; */
+}
+
+button {
+    all: unset;
+    border: white solid;
+    border-radius: 10px;
+    padding: 20px 30px;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #FCC726;
+    color: black;
+}
+
+button:active {
+    color: white;
+    opacity: 0.5;
 }
