@@ -87,9 +87,6 @@ const displayController = (() => {
                     
                     cells[winningIndexes].style.opacity = '0.5';
                 }
-                // console.log(cells[2].textContent)
-                // console.log(cells[5].textContent)
-                // console.log(cells[8])
             }
         })
     })
