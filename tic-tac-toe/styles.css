@@ -30,6 +30,7 @@ body {
     border: solid white 5px;
     border-radius: 20px;
     overflow: hidden;
+    filter: blur(5px);
 }
 
 .cell {
@@ -58,9 +59,17 @@ body {
     /* border: solid; */
 }
 
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
 button {
     all: unset;
-    border: white solid;
+    border: white solid 3px;
     border-radius: 10px;
     padding: 20px 30px;
     font-size: 2rem;
