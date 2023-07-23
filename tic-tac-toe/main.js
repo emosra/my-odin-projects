@@ -1,3 +1,8 @@
+const Player = (name, choice, isTurn) => {
+    
+    return {name, choice, isTurn}
+}
+
 const gameBoard = (() => {
     const winningCombos = [
         [0,1,2], // [1,1,1,0,0,0,0,0,0]
@@ -34,6 +39,7 @@ const displayController = (() => {
 
     const unBlurContainer = () => {
         gameContainer.style.filter = "blur(0px)";
+        gameContainer.style.opacity = "1";
 
     }
 
@@ -64,47 +70,63 @@ const displayController = (() => {
         }
     }
 
-    const playerMove = (player, cellSelection, index) => {
-        gameBoard.board[index] = player.choice;
-        cellSelection.textContent = player.choice;
-        gameBoard.playerOne.isTurn = !gameBoard.playerOne.isTurn;
-        gameBoard.playerTwo.isTurn = !gameBoard.playerTwo.isTurn;
-        checkWinner(gameBoard.board, player)
+    const playerOneMove = (index) => {
+        if (gameBoard.haveWinner === true) {
+            return;
+        }
+
+        if (gameBoard.board.every(element => element !== null)) {
+            return;
+        }
+
+        if (gameBoard.board[index] !== null) {
+            return false
+        }
+
+            gameBoard.board[index] = gameBoard.playerOne.choice;
+            gameBoard.playerOne.isTurn = !gameBoard.playerOne.isTurn;
+            gameBoard.playerTwo.isTurn = !gameBoard.playerTwo.isTurn
+            checkWinner(gameBoard.board, gameBoard.playerOne)
+
+            return true;
     }
 
-    // const checkBoard = (boardArr) => {
-    //     let isFull = false;
+    const playerTwoMove = () => {
+        if (gameBoard.haveWinner === true) {
+            return;
+        }
 
-    //     for (let i = 0; i < boardArr.length; i++) {
-    //         if (boardArr[i] === false) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
+        if (gameBoard.board.every(element => element !== null)) {
+            return;
+        }
 
-    // const isArrayFull = (item) => {
-    //     if (item) return true;
-    // }
+        const playerTwoIndex = Math.floor(Math.random() * gameBoard.board.length);
+        if (gameBoard.board[playerTwoIndex] !== null) {
+            playerTwoMove()
+            return;
+        }
+
+        gameBoard.board[playerTwoIndex] = gameBoard.playerTwo.choice;
+        gameBoard.playerOne.isTurn = !gameBoard.playerOne.isTurn;
+        gameBoard.playerTwo.isTurn = !gameBoard.playerTwo.isTurn;
+        checkWinner(gameBoard.board, gameBoard.playerTwo)
+    }
 
     cells.forEach((cell, index) => {
         cell.addEventListener('click', (e) => {
-
-
-
-            if (cell.textContent !== '' || gameBoard.haveWinner === true) return;
-
-            if (gameBoard.playerOne.isTurn) {
-                playerMove(gameBoard.playerOne, cell, index)
-            } else {
-                playerMove(gameBoard.playerTwo, cell, index)
+            if (playerOneMove(index)) {
+                playerOneMove(index)
+                playerTwoMove()
             }
+            
+            renderBoard()
 
             if (gameBoard.haveWinner) {
                 for (let i = 0; i < gameBoard.winningCombo.length; i++) {
                     const winningIndexes = gameBoard.winningCombo[i];
                     
                     cells[winningIndexes].style.opacity = '0.5';
+                    cells[winningIndexes].style.outline = '1px solid #FCC726'
                 }
             }
 
@@ -118,7 +140,7 @@ const displayController = (() => {
             }
         })
     })
-
+    
     selectionBtns.forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             gameBoard.playerOne = Player('Player One', btn.textContent, true)
@@ -135,17 +157,5 @@ const displayController = (() => {
             createPlayerInfo(gameBoard.playerTwo);
         })
     })
-
     return {renderBoard}
 })();
-
-// Player factory function
-
-const Player = (name, choice, isTurn) => {
-    
-    return {name, choice, isTurn}
-}
-
-// Functions
-
-displayController.renderBoard()
