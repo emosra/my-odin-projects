@@ -9,13 +9,14 @@ const gameBoard = (() => {
         [0,4,8], // [1,0,0,0,1,0,0,0,1]
         [2,4,6], // [0,0,1,0,1,0,1,0,0]
     ]
-    const board = ['', '', '', '', '', '', '', '', ''];
+    const board = Array(9).fill(null);
     let playerOne;
     let playerTwo;
     let winningCombo;
     let haveWinner = false;
+    let isBoardFull;
 
-    return {winningCombos, board, playerOne, playerTwo, winningCombo, haveWinner}
+    return {winningCombos, board, playerOne, playerTwo, winningCombo, haveWinner, isBoardFull}
 })();
 
 const displayController = (() => {
@@ -71,8 +72,26 @@ const displayController = (() => {
         checkWinner(gameBoard.board, player)
     }
 
+    // const checkBoard = (boardArr) => {
+    //     let isFull = false;
+
+    //     for (let i = 0; i < boardArr.length; i++) {
+    //         if (boardArr[i] === false) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    // const isArrayFull = (item) => {
+    //     if (item) return true;
+    // }
+
     cells.forEach((cell, index) => {
         cell.addEventListener('click', (e) => {
+
+
+
             if (cell.textContent !== '' || gameBoard.haveWinner === true) return;
 
             if (gameBoard.playerOne.isTurn) {
@@ -86,6 +105,15 @@ const displayController = (() => {
                     const winningIndexes = gameBoard.winningCombo[i];
                     
                     cells[winningIndexes].style.opacity = '0.5';
+                }
+            }
+
+            gameBoard.isBoardFull = gameBoard.board.every(element => element !== null)
+
+            if (gameBoard.isBoardFull & gameBoard.haveWinner === false) {
+                for (let i = 0; i < cells.length; i++) {
+                    
+                    cells[i].style.opacity = '0.5';
                 }
             }
         })
