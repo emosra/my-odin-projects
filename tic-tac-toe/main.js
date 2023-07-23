@@ -27,6 +27,7 @@ const gameBoard = (() => {
 const displayController = (() => {
     const body = document.querySelector('body')
     const gameContainer = document.querySelector('.game-container')
+    const gridBorder = document.querySelector('.grid-border')
     const choiceContainer = document.querySelector('.choices-container')
     const cells = document.querySelectorAll('.cell')
     const selectionBtns = document.querySelectorAll('.choices')
@@ -37,20 +38,9 @@ const displayController = (() => {
         }
     }
 
-    const unBlurContainer = () => {
-        gameContainer.style.filter = "blur(0px)";
-        gameContainer.style.opacity = "1";
-
-    }
-
     const hideSelectionContainer = () => {
-        choiceContainer.style.display = 'none'
-    }
-
-    const createPlayerInfo = (player) => {
-        const choiceText = document.createElement('div')
-        choiceText.textContent = `${player.name}: ${player.choice}`
-        body.appendChild(choiceText)
+        choiceContainer.style.display = 'none';
+        gridBorder.style.display = 'flex'
     }
 
     const checkWinner = (boardArr, player) => {
@@ -125,8 +115,9 @@ const displayController = (() => {
                 for (let i = 0; i < gameBoard.winningCombo.length; i++) {
                     const winningIndexes = gameBoard.winningCombo[i];
                     
-                    cells[winningIndexes].style.opacity = '0.5';
-                    cells[winningIndexes].style.outline = '1px solid #FCC726'
+                    cells[winningIndexes].style.outline = '5px solid black'
+                    cells[winningIndexes].style.backgroundColor = '#F02F23'
+                    cells[winningIndexes].style.color = 'black'
                 }
             }
 
@@ -135,7 +126,9 @@ const displayController = (() => {
             if (gameBoard.isBoardFull & gameBoard.haveWinner === false) {
                 for (let i = 0; i < cells.length; i++) {
                     
-                    cells[i].style.opacity = '0.5';
+                    cells[i].style.outline = '5px solid black'
+                    cells[i].style.backgroundColor = '#F2C477'
+                    cells[i].style.color = '#F02F23'
                 }
             }
         })
@@ -152,9 +145,6 @@ const displayController = (() => {
             }
 
             hideSelectionContainer();
-            unBlurContainer();
-            createPlayerInfo(gameBoard.playerOne);
-            createPlayerInfo(gameBoard.playerTwo);
         })
     })
     return {renderBoard}

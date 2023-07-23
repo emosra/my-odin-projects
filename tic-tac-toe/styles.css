@@ -1,57 +1,40 @@
-/* FE4C4C
-FCC726 */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap');
+:root {
+    --yellow: #FDEB4A;
+    --golden-sand: #F2C477;
+    --red: #F02F23;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'EB Garamond', serif;
 }
 
 body {
-    height: 100vh;
-    background-color: black;
-    color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    font-family: 'Rubik', sans-serif;
-    gap: 8px;
-}
-
-.game-container {
-    height: 500px;
-    width: 500px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
-    grid-gap: 8px;
-    border: solid white 5px;
-    border-radius: 20px;
-    overflow: hidden;
-    filter: blur(10px);
-    opacity: 0.1;
-}
-
-.cell {
-    background-color: #FE4C4C;
-    display: flex;
     justify-content: center;
     align-items: center;
+    gap: 16px;
+    height: 100vh;
+    border-top: black 50px solid;
+    border-bottom: black 50px solid;
+    background-color: var(--yellow);
+    color: var(--red);
+}
+
+.grid-border {
+    background-color: black;
+}
+
+.title {
+    border: solid 10px;
+    color: black;
     font-size: 5rem;
-}
-
-.cell:hover {
-    background-color: #FCC726;
-}
-
-.cell:active {
-    opacity: 0.5;
-}
-
-.cell:hover {
-    cursor: pointer;
+    padding: 8px;
 }
 
 .choices-container {
@@ -59,25 +42,55 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 32px;
+}
+
+.choices-container h1 {
+    color: black;
+    font-size: 3rem;
+}
+
+.game-container {
+    height: 400px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 16px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    background-color: var(--yellow);
+}
+
+.cell:hover {
+    cursor: pointer;
+    background-color: var(--golden-sand);
+}
+
+.cell:active {
+    opacity: 0.9;
 }
 
 button {
     all: unset;
-    border: white solid 3px;
     border-radius: 10px;
-    padding: 20px 30px;
+    padding: 20px 40px;
+    color: black;
     font-size: 2rem;
-    font-weight: 900;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: #FCC726;
-    color: black;
+    background-color: var(--red);
+    border: solid black 3px;
+    box-shadow: 5px 5px;
 }
 
 button:active {
-    color: white;
-    opacity: 0.5;
+    box-shadow: 2px 2px;
 }
