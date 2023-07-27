@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="bundle.js" defer></script>
+    <link rel="stylesheet" href="../src/style.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <header>
+        <p>Todo List</p>
+    </header>
+
+    <div class="sidebar">
+        <ul>
+            <li class="sidebar-btn">All</li>
+            <li class="sidebar-btn">Completed</li>
+        </ul>
+    </div>
+
+    <div class="tasks-container">
+        <ul class="tasks-list">
+            <li class="task">Finish Homework</li>
+            <button class="add-task-btn">Add Task</button>
+        </ul>
+            
+    </div>
+
+    <section class="modal hidden">
+        <button class="btn-close-modal">X</button>
+        <form action="">
+            <input type="text" name="task-title" id="task-title">
+            <input type="text" name="task-desc" id="task-desc">
+            <input type="date" name="task-due-date" id="task-due-date">
+            <button class="btn-submit-modal">Submit</button>
+        </form>
+
+
+    </section>
+    <div class="overlay hidden"></div>
+
 </body>
 </html>

@@ -1,1 +1,1 @@
-console.log("works");
+(()=>{"use strict";const e=document.querySelector(".modal"),d=document.querySelector(".overlay"),t=()=>{e.classList.add("hidden"),d.classList.add("hidden")},c=document.querySelector(".add-task-btn"),s=document.querySelector(".btn-close-modal");c.addEventListener("click",(()=>{e.classList.remove("hidden"),d.classList.remove("hidden")})),s.addEventListener("click",t),overlay.addEventListener("click",t)})();
